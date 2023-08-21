@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #ffc7c7;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #ebe2ea;
+}
+
+h2 {
+    color: rgb(197, 152, 97);
+}
+</style>
+</head>
+<body>
+    <h2>Home</h2>
+
+    <table>
+      <tr>
+        <th>HTTP Methods</th>
+        <th>Path</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td>GET</td>
+        <td>/(Home page)</td>
+        <td>Takes you to the home page</td>
+      </tr>
+    </table>
+
+    <h2>Users Table</h2>
+
+    <table>
+      <tr>
+        <th>HTTP Methods</th>
+        <th>Path</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td>GET</td>
+        <td>/users</td>
+        <td>displays a list of users</td>
+      </tr>
+      <tr>
+        <td>GET</td>
+        <td>/user/:id</td>
+        <td>displays a specific user based on id</td>
+      </tr>
+      <tr>
+        <td>POST</td>
+        <td>/user</td>
+        <td>Creates a new user</td>
+      </tr>
+      <tr>
+        <td>PATCH/PUT</td>
+        <td>/user/:id</td>
+        <td>Updates an existing user or adds a user</td>
+      </tr>
+      <tr>
+        <td>DELETE</td>
+        <td>/user/:id</td>
+        <td>Deletes a user</td>
+      </tr>
+    </table>
+
+
+    <h2>Products Table</h2>
+
+    <table>
+      <tr>
+        <th>HTTP Methods</th>
+        <th>Path</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td>GET</td>
+        <td>/products</td>
+        <td>Displays a list of products</td>
+      </tr>
+      <tr>
+        <td>GET </td>
+        <td>/product/:id</td>
+        <td>Displays a single user by id</td>
+      </tr>
+      <tr>
+        <td>POST</td>
+        <td>/product</td>
+        <td>Adds a new product</td>
+      </tr>
+      <tr>
+        <td>PUT/PATCH</td>
+        <td>/product/:id</td>
+        <td>Updates a products details</td>
+      </tr>
+      <tr>
+        <td>DELETE </td>
+        <td>/product/:id</td>
+        <td>deletes a product from the database</td>
+      </tr>
+    </table>
+</body>
+</html>
