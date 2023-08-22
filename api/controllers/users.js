@@ -1,7 +1,8 @@
 const { router } = require("json-server");
 const { getUsers, getUserByID, insertUser, deleteUserByID, updateUserByID} =require("../models/userModels.js")
+// const {bcrypt} = require('bcrypt');
+const bcrypt = require('bcrypt')
 
-// const bcrypt = require('bcrypt')
 
 // Get All Users
 const showUsers = (req, res) => {
@@ -47,7 +48,7 @@ const showUserById = (req, res) => {
 // Add New User
 const  createUser = (req, res) => {
     const data = req.body;
-    // data.userPass =  bcrypt.hashSync(data.userPass, 10);
+    data.userPass =  bcrypt.hashSync(data.userPass, 10);
     insertUser(data, (err, results) => {
         if (err){
             res.send(err);

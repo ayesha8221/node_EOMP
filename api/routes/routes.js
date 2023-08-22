@@ -11,19 +11,19 @@ const {
 } = require("../controllers/products");
 
 //get all products
-router.get("/Products", showProducts);
+router.get("/products", showProducts);
 
 //get single product
-router.get("/Products/:id", showProductById);
+router.get("/products/:id", showProductById);
 
 //create a new product
-router.post("/Products", createProduct);
+router.post("/products", createProduct);
 
 // Delete a product
-router.delete("/Products/:id", deleteProduct);
+router.delete("/products/:id", deleteProduct);
 
 // Update a product
-router.put("/Products/:id", updateProduct);
+router.put("/products/:id", updateProduct);
 
 // USER ROUTES
 
@@ -36,19 +36,19 @@ const {
 } = require("../controllers/users");
 
 //get all users
-router.get("/Users", showUsers);
+router.get("/users", showUsers);
 
 //get single user
-router.get("/Users/:id", showUserById);
+router.get("/users/:id", showUserById);
 
 //create a new user
-router.post("/Users", createUser);
+router.post("/users", createUser);
 
 // Delete a user
-router.delete("/Users/:id", deleteUser);
+router.delete("/users/:id", deleteUser);
 
 // Update a user
-router.put("/Users/:id", updateUser);
+router.put("/users/:id", updateUser);
 
 // export default router
 module.exports = router;

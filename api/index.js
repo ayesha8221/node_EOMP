@@ -5,8 +5,9 @@ const cors = require("cors");
 const app = express();
 const bodyParser = require("body-parser");
 const router = require("./routes/routes");
-const errorHandling = require("./middleware/errorhandling");
-
+const errorHandling = require("./middleware/ErrorHandling");
+// const {errorHandling} = require('./middleware/ErrorHandling')
+// import errorHandling from "./middleware/ErrorHandling";
 
 // Setting port based on environment variables
 require("dotenv").config();
@@ -40,7 +41,7 @@ app.use(router);
 app.use(express.static('public'));
 app.get("/", (req, res) => {
   res.status(200);
-  res.sendFile(path.join(__dirname, "./public/html/index.html"));
+  res.sendFile(path.join(__dirname, "./static/html/index.html"));
 });
 
 
