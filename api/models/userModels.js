@@ -39,18 +39,31 @@ const insertUser = (data, result) => {
     });   
 }
 
-// Update an existing product
+// Update an existing user
 const updateUserByID = (id, data, result) => {
-    db.query('UPDATE Users SET  firstName = ?, lastName = ?, userAge = ? Gender = ? userRole = ? emailAdd = ? userPass = ? userProfile = ? WHERE userID = ?', [data.firstName, data.lastName, data.userAge, data.Gender, data.userRole, data.emailAdd, data.userPass, data.userProfile, id], (err, results) => {
+    db.query(
+      "UPDATE users SET firstName = ?, lastName = ?, userAge = ?, Gender = ?, userRole = ? , emailAdd = ? , userPass = ? , userProfile = ? WHERE userID = ?",
+      [
+        data.firstName,
+        data.lastName,
+        data.userAge,
+        data.Gender,
+        data.userRole,
+        data.emailAdd,
+        data.userPass,
+        data.userProfile,
+        id,
+      ],
+      (err, results) => {
         if (err) {
-            console.log(err);
-            result({ error: "Failed to update product." }, null);
+          console.log(err);
+          result({ error: "Failed to update user." }, null);
         } else {
-            result(null, results);
+          result(null, results);
         }
-        
-    });
-}; 
+      }
+    );
+  };
 
 // Delete a User
 const deleteUserByID = (id, result) => {
