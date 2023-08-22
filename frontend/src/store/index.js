@@ -1,4 +1,4 @@
-import { createStore } from 'vuex'
+import { createStore } from "vuex";
 
 export default createStore({
   state: {
@@ -7,8 +7,7 @@ export default createStore({
     users: null,
     user: null,
   },
-  getters: {
-  },
+  getters: {},
   mutations: {
     setProducts: (state, products) => {
       state.products = products;
@@ -26,26 +25,38 @@ export default createStore({
   actions: {
     getProducts: async (context) => {
       fetch("https://nodeeomp.onrender.com/products")
-      .then((res) => res.json())
-      .then((products) => context.commit("setProducts", products));
+        .then((res) => res.json())
+        .then((products) => context.commit("setProducts", products));
     },
+    // getProduct: async (context, id) => {
+    //   fetch(`https://nodeeomp.onrender.com/products`)
+    //     .then((res) => res.json())
+    //     .then(({ products }) => {
+    //       let product;
+    //       products.forEach((prod) => {
+    //         if (prod.id == id) {
+    //           product = prod;
+    //         }
+    //       });
+    //       context.commit("setProduct", product);
+    //     });
+    // },
     getProduct: async (context, id) => {
-      fetch("https://nodeeomp.onrender.com/product/" + id)
-      .then((res) => res.json())
-      .then((product) => context.commit("setProduct", product))
+      fetch("https://nodeeomp.onrender.com/products/" + id)
+        .then((res) => res.json())
+        .then((product) => context.commit("setProduct", product));
     },
+
     getUsers: async (context) => {
       fetch("https://nodeeomp.onrender.com/users")
-      .then((res) => res.json())
-      .then((users) => context.commit("setProducts", products));
+        .then((res) => res.json())
+        .then((users) => context.commit("setUsers", users));
     },
     getUser: async (context, id) => {
-      fetch("https://nodeeomp.onrender.com/user/" + id)
-      .then((res) => res.json())
-      .then((user) => context.commit("setProduct", product))
-    }, 
-      
+      fetch("https://nodeeomp.onrender.com/users/" + id)
+        .then((res) => res.json())
+        .then((user) => context.commit("setUser", user));
+    },
   },
-  modules: {
-  }
-})
+  modules: {},
+});
