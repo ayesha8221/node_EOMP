@@ -4,7 +4,7 @@
     <HelloWorld msg="Welcome to Your Vue.js App"/>
   </div> -->
   <!-- <NavbarComp/> -->
-  <Footercomp/>
+  <!-- <Footercomp/> -->
 </template>
 
 <script>

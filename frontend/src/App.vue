@@ -7,11 +7,9 @@
     <router-link to="/users">Users</router-link> |
   </nav> -->
   <NavbarComp/>
-  <router-view/>
-<CardComp/>
-<UserCard/>
-<AdminTable/>
+<router-view/>
 <Footercomp/>
+
 </template>
 
 

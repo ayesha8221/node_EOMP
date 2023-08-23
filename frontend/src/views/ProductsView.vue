@@ -1,18 +1,48 @@
 <template>
-    <div v-if="products" class="flex-container row row-cols-3">
+    <div>
+<select v-model="selectedCategory" @change="filter">
+      <option value="">All</option>
+      <!-- <option value="Necklaces">Necklaces</option> -->
+      <option v-for="category in categories" :key="category">{{ category }}</option>
+    </select>
+
+    <div v-for="product in filteredProducts" :key="product.prodID">
+        <img :src="product.prodUrl" alt="Product Image" class="product-image" />
+        <h3>{{ product.prodName }}</h3>
+  <p>Price: R {{ product.amount }}</p>
+  <p>Quantity: {{ product.quantity }}</p>
+  
+    </div>
+    </div>
+<div v-if="products" class="flex-container row row-cols-3">
         <CardComp v-for="product of products" :key="product.prodID" :product="product" />
     </div>
-    <div v-else>Loading...</div>
+        <div class="loader"></div>
 </template>
 <script>
 import CardComp from '@/components/CardComp.vue';
 export default {
+
+    data() {
+    return {
+      selectedCategory: "", // Holds the selected category
+      filteredProducts: [], // Holds the filtered products
+      categories: ["Necklace", "Watch", "Earrings", "Ring"] // Example categories
+    };
+  },
+
     computed: {
         products() {
             return this.$store.state.products
         }
     },
-
+    methods: {
+    filter() {
+      this.filteredProducts = this.products.filter(product => {
+        return this.selectedCategory === "" || product.category === this.selectedCategory;
+      });
+    }
+  },
     mounted() {
         this.$store.dispatch("getProducts")
     },
@@ -21,4 +51,23 @@ export default {
 }
 </script>
 <style>
+
+.loader {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    /* justify-items: center; */
+  border: 7px solid #fff9e4; /* Light grey */
+  border-top: 7px solid #0a0b0c; /* Blue */
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
 </style>

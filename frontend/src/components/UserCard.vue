@@ -23,6 +23,9 @@
                 <th>FirstName</th>
                 <th>LastName</th>
                 <th>Email</th>
+                <th>Gender</th>
+                <th>Age</th>
+                <th>Role</th>
                 <th>Image</th>
                 <th>Edit/Delete</th>
               </tr>
@@ -33,6 +36,9 @@
                 <td>{{ user.firstName }}</td>
                 <td>{{ user.lastName }}</td>
                 <td>{{ user.emailAdd }}</td>
+                <td>{{ user.Gender }}</td>
+                <td>{{ user.userAge }}</td>
+                <td>{{ user.userRole }}</td>
                 <td><img class="tableImg" :src="user.userProfile" alt="" /></td>
                 <td>
                   <button
@@ -53,15 +59,6 @@
                   >
                     Delete
                   </button>
-                  <button
-                    type="button"
-                    class="btn btton"
-                    data-bs-toggle="modal"
-                    data-bs-target="#exampleModal"
-                    id="delete-row"
-                  >
-                    View
-                  </button>
                 </td>
               </tr>
             </tbody>
@@ -72,22 +69,28 @@
   </div>
 </template>
 <script>
-  
 
   import UserCard from '@/components/UserCard.vue';
 export default {
-    props: ["user"],
+    // props: ["users"],
     computed: {
-        products() {
-            return this.$store.state.products
+        users() {
+            return this.$store.state.users
         }
     },
 
     mounted() {
-        this.$store.dispatch("getProducts")
+        this.$store.dispatch("getUsers")
     },
 
     components: {UserCard},
 }
 </script>
-<style></style>
+<style>
+
+.tableImg {
+    width: 120px;
+    height: auto;
+}
+
+</style>
