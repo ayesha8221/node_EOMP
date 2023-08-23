@@ -1,13 +1,13 @@
 <template>
-    <div v-if="product" class="product_details" :key="product.prodID" :product="product">
+    <div v-if="user" class="product_details" :key="user.userID" :user="user">
         <div class="card mx-auto">
             <div class="card text-black border-white border-2 text-center ">
-            <img :src="product.prodUrl" :alt="product.prodName"/>
+            <img :src="user.userProfile" :alt="user.firstName"/>
             <h2 class="fs-4">
-                {{ product.prodName }}
+                {{ user.firstName }}
             </h2>
                 <div class="card-body m-2">
-                    <p>{{ product.amount }}</p>
+                    <p>{{ user.emailAdd }}</p>
                 </div>
             </div>
         </div>
@@ -15,10 +15,10 @@
 </template>
 <script>
 export default {
-    // props: ["id"],
+    props: ["id"],
     computed: {
-        product() {
-            return this.$store.state.product
+        user() {
+            return this.$store.state.user
         },
         id () {
             return this.$route.params.id
@@ -27,7 +27,7 @@ export default {
     },
 
     mounted() {
-        this.$store.dispatch("getProduct", this.id)
+        this.$store.dispatch("getUser", this.id)
     },
     
 }
