@@ -7,12 +7,21 @@
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import navbar from '@/components/Navabarcomp.vue'
+import footer from '@/components/Footercomp.vue'
+
 
 export default {
   name: 'HomeView',
   components: {
-    HelloWorld
-  }
-}
+    navbar,
+    footer,
+  },
+};
 </script>
+
+<style scoped>
+::-webkit-scrollbar {
+  display: none;
+}
+</style>
