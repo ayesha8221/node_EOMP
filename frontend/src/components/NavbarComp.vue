@@ -24,7 +24,7 @@
               <router-link class="nav-link links fw-bold text-white" to="/contact">Contact</router-link>
             </li>
             <li class="nav-item">
-              <router-link class="nav-link links fw-bold text-white" to="/login">Login</router-link>
+              <router-link class="nav-link links fw-bold text-white" to="/admin">Admin</router-link>
             </li>
         </ul>
       </div>

@@ -72,8 +72,22 @@
   </div>
 </template>
 <script>
+  
+
+  import UserCard from '@/components/UserCard.vue';
 export default {
-  props: ["user"],
-};
+    props: ["user"],
+    computed: {
+        products() {
+            return this.$store.state.products
+        }
+    },
+
+    mounted() {
+        this.$store.dispatch("getProducts")
+    },
+
+    components: {UserCard},
+}
 </script>
 <style></style>

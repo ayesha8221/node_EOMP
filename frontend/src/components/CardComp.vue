@@ -12,7 +12,7 @@
 </template>
 <script>
 export default {
-  props: ["id"],
+  props: ["product"],
 };
 </script>
 <style></style>

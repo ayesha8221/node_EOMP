@@ -67,6 +67,11 @@ Our new website, LuxeGem Jewels.com, offers a user-friendly experience that ensu
   
   </div>
 </template>
+<script>
+export default {
+    
+}
+</script>
 
 <style scooped>
 .card-container {
