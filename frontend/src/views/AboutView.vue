@@ -33,7 +33,8 @@ Our new website, LuxeGem Jewels.com, offers a user-friendly experience that ensu
   <div class="card us" style="width: 18rem;">
   <img src="https://i.postimg.cc/C5yj7LsP/C12-C1-Lisa-Mbuwa-3.jpg" class="card-img-top" alt="...">
   <div class="card-body">
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <h3>Monalisa Mbuwa</h3>
+    <p class="card-text">Founder, Designer & Software Developer </p>
   </div>
 </div>
   
@@ -41,7 +42,8 @@ Our new website, LuxeGem Jewels.com, offers a user-friendly experience that ensu
 <div class="card us" style="width: 18rem;">
   <img src="https://i.postimg.cc/kMZNMwrN/C12-Ayesha-Galant-Class1-1.jpg" class="card-img-top" alt="...">
   <div class="card-body">
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <h3>Ayesha Galant</h3>
+    <p class="card-text">Co-Owner</p>
   </div>
 </div>
   
@@ -49,8 +51,8 @@ Our new website, LuxeGem Jewels.com, offers a user-friendly experience that ensu
 <div class="card us" style="width: 18rem;">
   <img src="https://i.postimg.cc/MT0Tk68r/Zulaigh-s.jpg" class="card-img-top" alt="...">
   <div class="card-body">
-    <h3>zuzulaigh Benjamin</h3>
-    <p class="card-text">Designer</p>
+    <h3>Zulaigah Benjamin</h3>
+    <p class="card-text"> Custom Designer</p>
   </div>
 </div>
   
@@ -58,7 +60,8 @@ Our new website, LuxeGem Jewels.com, offers a user-friendly experience that ensu
 <div class="card us" style="width: 18rem;">
   <img src="https://i.postimg.cc/BntBJybC/C12-Samkelo-Mpokela-Class1-1.jpg" class="card-img-top" alt="...">
   <div class="card-body">
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <h1>Samkelo Mpokela</h1>
+    <p class="card-text">Managing Director</p>
   </div>
 </div>
 </div>

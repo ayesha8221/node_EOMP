@@ -2,7 +2,7 @@
     <!-- Footer -->
   <footer
           class="text-center text-lg-start text-white  "
-          style="background-color:rgb(238,197,158);;"
+          style="background-color:black;;"
           >
     <!-- Grid container -->
     <div class="container p-4 pb-0">
@@ -34,7 +34,9 @@
           <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
             <h6 class="text-uppercase mb-4 font-weight-bold fs-6">Contact</h6>
             <p class="fs-6"><i class="fas fa-envelope mr-3"></i> mbuwalisa@gmail.com</p>
+            <p class="fs-6"><i class="fas fa-envelope mr-3"></i> ayesha.glnt012@gmail.com</p>
             <p class="fs-6"><i class="fas fa-phone "></i> + 01 234 567 88</p>
+            <p class="fs-6"><i class="fas fa-phone "></i> + 01 234 566 56</p>
 
           </div>
           <!-- Grid column -->
@@ -129,8 +131,8 @@
   </script>
   
   <style scoped>
-  a{
+  /* a{
     animation:backInUp!important;
     animation-duration: 2s!important;
-  }
+  } */
   </style>

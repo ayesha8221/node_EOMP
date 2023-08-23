@@ -6,11 +6,11 @@
     <router-link to="/admin">Admin</router-link> |
     <router-link to="/users">Users</router-link> |
   </nav> -->
-  <NavbarComp/>
-  <router-view/>
-<CardComp/>
-<UserCard/>
-<AdminTable/>
+<NavbarComp/>
+<!-- <CardComp/> -->
+<!-- <UserCard/> -->
+<!-- <AdminTable/> -->
+<router-view/>
 <Footercomp/>
 </template>
 
@@ -26,7 +26,7 @@ import AdminTable from './components/AdminTable.vue';
 export default {
   components: {
     NavbarComp, Footercomp,
-    CardComp, UserCard, AdminTable
+    CardComp, UserCard, AdminTable,
 }
 }
 
@@ -38,7 +38,12 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color:black;
+  background-color:rgb(244,210,179) ;
+
+}
+::-webkit-scrollbar {
+  display: none;
 }
 
 nav {

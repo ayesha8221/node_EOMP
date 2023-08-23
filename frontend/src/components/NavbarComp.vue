@@ -63,7 +63,7 @@
   
   /* Style the navbar */
   .navbar {
-  background-color: #333; /* Set the background color */
+  background-color:black; /* Set the background color */
   color:black; /* Set the text color */
   font-family: Arial, sans-serif; /* Set the font */
   }
