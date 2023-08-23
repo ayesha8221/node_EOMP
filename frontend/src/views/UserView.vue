@@ -1,21 +1,25 @@
 <template>
-    <div v-if="user" class="product_details" :key="user.userID" :user="user">
+ <div v-if="user" class="product_details" :key="user.userID" :user="user">
         <div class="card mx-auto">
-            <div class="card text-black border-white border-2 text-center ">
-            <img :src="user.userProfile" :alt="user.firstName"/>
-            <h2 class="fs-4">
-                {{ user.firstName }}
-            </h2>
-                <div class="card-body m-2">
-                    <p>{{ user.emailAdd }}</p>
-                </div>
-            </div>
-        </div>
+      <div class="container">
+    <div class="card mx-auto my-2">
+      <router-link :to="{ name: 'admin user', params: { id: user.userID } }">
+        <img :src="user.userProfile" :alt="user.firstName" />
+        <h3>{{ user.firstName }}</h3>
+        <p>{{ user.lastName }}</p>
+        <p>{{ user.userAge }}</p>
+        <p>{{ user.Gender }}</p>
+        <p>{{ user.userRole }}</p>
+        <p>{{ user.emailAdd }}</p>
+      </router-link>
     </div>
+  </div>
+        </div>
+        </div>
 </template>
 <script>
 export default {
-    props: ["id"],
+    // props: ["id"],
     computed: {
         user() {
             return this.$store.state.user

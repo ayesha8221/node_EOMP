@@ -6,12 +6,13 @@
     <router-link to="/admin">Admin</router-link> |
     <router-link to="/users">Users</router-link> |
   </nav> -->
-<NavbarComp/>
-<!-- <CardComp/> -->
-<!-- <UserCard/> -->
-<!-- <AdminTable/> -->
-<router-view/>
+  <NavbarComp/>
+  <router-view/>
+<CardComp/>
+<UserCard/>
+<AdminTable/>
 <Footercomp/>
+
 </template>
 
 

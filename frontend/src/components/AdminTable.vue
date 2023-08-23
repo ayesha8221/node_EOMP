@@ -1,4 +1,11 @@
 <template>
+    <div>
+    <!-- ... Other content ... -->
+    <button @click="toggleSort">
+      {{ isAscending ? 'Sort by Price (Low to High)' : 'Sort by Price (High to Low)' }}
+    </button>
+    <!-- ... Product listing ... -->
+  </div>
 <div class="body" v-if="products">
           <div class="row table-container">
             <div class="col-12">
@@ -47,7 +54,7 @@
                       <button
                         type="submit"
                         class="btn btton"
-                        @click="($event) => deleteProduct()"
+                        @click= deleteProduct()
                         id="delete-row"
                       >
                         Delete
@@ -77,23 +84,16 @@ products() {
 mounted() {
 this.$store.dispatch("getProducts")
 },
+};
 
-methods: {
-async deleteProduct(id) {
-try {
-await axios.delete(`https://nodeeomp.onrender.com/products/${id}`);
-this.$store.dispatch("getProducts")
-} catch (err) {
-alert(err);
-}
-},
-},
-}
 
 
 
 </script>
 
-<style lang="">
+<style scoped>
+.tableImg{
+    width : 65px;
+}
 
 </style>
