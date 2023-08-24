@@ -1,6 +1,6 @@
 <template>
     <div v-if="product" class="product_details" :key="product.prodID" :product="product">
-        <div class="card mx-auto">
+        <div class="card mx-auto" id="that">
             <div class="card text-black border-white border-2 text-center ">
             <img :src="product.prodUrl" :alt="product.prodName"/>
             <h2 class="fs-4">
@@ -32,6 +32,13 @@ export default {
     
 }
 </script>
-<style>
+<style scoped>
+    img{
+        width: 300px;
+    }
+    .that {
+        width: 300px;
+        height: 400px;
+    }
 
 </style>

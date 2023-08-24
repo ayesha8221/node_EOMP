@@ -55,6 +55,10 @@
     text-decoration: none;
     color:black;
   }
+  .nav-link:hover {
+    color: burlywood !important;;
+    border-radius:10px !important;
+  }
   /* Reset default margin and padding for the navbar */
   .navbar {
   margin: 0;

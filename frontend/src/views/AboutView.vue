@@ -29,12 +29,12 @@ Our new website, LuxeGem Jewels.com, offers a user-friendly experience that ensu
 <h2 class="story">Meet our amazing team</h2>
 
 <!--start of team-->
-<div class="team">
+<div class="team d-flex flex-wrap justify-content-center">
   <div class="card us" style="width: 18rem;">
   <img src="https://i.postimg.cc/C5yj7LsP/C12-C1-Lisa-Mbuwa-3.jpg" class="card-img-top" alt="...">
   <div class="card-body">
     <h3>Monalisa Mbuwa</h3>
-    <p class="card-text">Founder, Designer & Software Developer </p>
+    <p class="card-text"> Frontend Software Developer </p>
   </div>
 </div>
   
@@ -43,27 +43,12 @@ Our new website, LuxeGem Jewels.com, offers a user-friendly experience that ensu
   <img src="https://i.postimg.cc/kMZNMwrN/C12-Ayesha-Galant-Class1-1.jpg" class="card-img-top" alt="...">
   <div class="card-body">
     <h3>Ayesha Galant</h3>
-    <p class="card-text">Co-Owner</p>
+    <p class="card-text">Backend Software Developer</p>
   </div>
 </div>
   
 
-<div class="card us" style="width: 18rem;">
-  <img src="https://i.postimg.cc/MT0Tk68r/Zulaigh-s.jpg" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h3>Zulaigah Benjamin</h3>
-    <p class="card-text"> Custom Designer</p>
-  </div>
-</div>
-  
 
-<div class="card us" style="width: 18rem;">
-  <img src="https://i.postimg.cc/BntBJybC/C12-Samkelo-Mpokela-Class1-1.jpg" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h1>Samkelo Mpokela</h1>
-    <p class="card-text">Managing Director</p>
-  </div>
-</div>
 </div>
 
 <!--end of team-->
@@ -84,7 +69,7 @@ export default {
 }
 
 .card {
-  flex: 1;
+  /* flex: 1; */
   max-width: calc(33.33% - 10px); /* Adjust the width  */
   margin: 5px;
   border: 1px solid #ccc;
@@ -112,6 +97,13 @@ export default {
 }
 .team {
 display: flex;
+}
+.my-element {
+  display: inline-block;
+  margin: 0 0.5rem;
+
+  animation: bounce; /* referring directly to the animation's @keyframe declaration */
+  animation-duration: 4s; /* don't forget to set a duration! */
 }
 
 /* .card {

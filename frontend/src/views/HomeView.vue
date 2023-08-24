@@ -58,13 +58,9 @@
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Next</span>
     </button>
-  </div> -->
-  <!-- <NavbarComp/> -->
-  <!-- <Footercomp/> -->
-  </div>
-  <!--End of slide-->
-<!--cards-->
-<div class="love">
+  </div> 
+  
+  <div class="love d-flex flex-wrap justify-content-center">
   <div class="card m-3" id="hun" style="width: 18rem ;">
   <img src="https://i.postimg.cc/MTvHnRQh/earrcover.jpg" class="card-img-top" id="stub" alt="...">
   <div class="card-body">
@@ -84,6 +80,10 @@
   </div>
 </div>
 </div>
+  </div>
+  <!--End of slide-->
+<!--cards-->
+
 <!--end of cards-->
 </template>
 
@@ -120,9 +120,11 @@ export default {
 .btn {
   margin-right: 800px !important;
 }
-.love{
+/* .love{
   display: flex;
-}
+  margin-left: 180px;
+  
+} */
 carousel-item {
   width: 100%;
   height: 100%;
@@ -135,10 +137,17 @@ carousel-item {
 }
 .card-img-top {
   width: 100%;
-  height: auto !important;
+  height:250px;
 }
 #hun.card {
-  height:60%;
+  height:300px;
+}
+#hun.card {
+  display: inline-block;
+  margin: 0 0.5rem;
+
+  animation: fadeIn; /* referring directly to the animation's @keyframe declaration */
+  animation-duration: 2s; /* don't forget to set a duration! */
 }
 
 
