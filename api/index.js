@@ -9,12 +9,14 @@ const errorHandling = require("./middleware/ErrorHandling");
 // const {errorHandling} = require('./middleware/ErrorHandling')
 // import errorHandling from "./middleware/ErrorHandling";
 
+const cookieparser = require("cookie-parser")
+
 // Setting port based on environment variables
 require("dotenv").config();
 const PORT = process.env.PORT || 3000;
 
 
-app.use(express.json(), cors());
+app.use(express.json(), cors(), cookieparser());
 
 
 // Allowing frontend access to backend

@@ -1,17 +1,17 @@
-// const {sign, veryify} = require('jsonwebtoken')
-// require('dotenv').config()
+const {sign, veryify} = require('jsonwebtoken')
+require('dotenv').config()
 
-// function createToken(user) {
-//     return sign({
-//         emailAdd: user.emailAdd,
-//         userPass: user.userPass
-//     },
-//     process.env.SECRET_KEY,
-//     {
-//         expiresIn: '1h'
-//     }
-//     )
-// }
+function createToken(user) {
+    return sign({
+        emailAdd: user.emailAdd,
+        userPass: user.userPass
+    },
+    process.env.SECRET_KEY,
+    {
+        expiresIn: '1h'
+    }
+    )
+}
 
 // function verifyAToken(req, res, next) {
 //     try {
@@ -28,7 +28,6 @@
     
 // }
 
-// module.exports = {
-//     createToken,
-//     verifyAToken
-// }
+module.exports = {
+    createToken
+}

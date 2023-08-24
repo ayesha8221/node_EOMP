@@ -2,6 +2,7 @@ const { router } = require("json-server");
 const { getUsers, getUserByID, insertUser, deleteUserByID, updateUserByID} =require("../models/userModels.js")
 // const {bcrypt} = require('bcrypt');
 const bcrypt = require('bcrypt')
+const createToken = require('../middleware/AuthenticateUser.js')
 
 
 // Get All Users
@@ -48,12 +49,20 @@ const showUserById = (req, res) => {
 // Add New User
 const  createUser = (req, res) => {
     const data = req.body;
+const user = {
+  emailAdd: data.emailAdd,
+  userPass: data.userPass,
+}
+
+let token = createToken(user)
     data.userPass =  bcrypt.hashSync(data.userPass, 10);
     insertUser(data, (err, results) => {
         if (err){
             res.send(err);
         }else{
-            res.json(results);
+          res.cookie("authorizedUser", token, {maxAge: 360000, httpOnly: true})
+            res.json(results, token);
+
         }
     });
 }
