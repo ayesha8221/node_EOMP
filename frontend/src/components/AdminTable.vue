@@ -10,13 +10,8 @@
           <div class="row table-container">
             <div class="col-12">
               <h1>Products</h1>
-              <button
-                type="button"
-                class="btn btn-success add-btn"
-                data-bs-toggle="modal"
-                data-bs-target="#addProductModal"
-              >
-                Add
+              <button>
+                <router-link to="/admin/add/product"> Add Product </router-link>
               </button>
             </div>
             <div class="col">
@@ -54,7 +49,7 @@
                       <button
                         type="submit"
                         class="btn btton"
-                        @click= deleteProduct()
+                        @click= deleteProduct(product.prodID)
                         id="delete-row"
                       >
                         Delete
@@ -70,8 +65,8 @@
 </template>
 
 <script>
-import router from '@/router';
-const axios = require('axios');
+
+import axios from 'axios'
 
 export default {
 // props: ["product"],
@@ -84,6 +79,19 @@ products() {
 mounted() {
 this.$store.dispatch("getProducts")
 },
+
+methods: {
+    async deleteProduct(id) {
+      try {
+        await axios.delete(`https://nodeeomp.onrender.com/products/${id}`);
+        this.$store.dispatch("getProducts")
+      } catch (err) {
+        alert(err);
+      }
+    },
+  },
+
+
 };
 
 
