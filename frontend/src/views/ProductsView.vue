@@ -7,6 +7,11 @@
       <option v-for="category in categories" :key="category">{{ category }}</option>
     </select>
 
+    <select v-model="sortOrder" @change="sortProducts">
+    <option value="asc">Low to High</option>
+    <option value="desc">High to Low</option>
+</select>
+
     <div v-for="product in filteredProducts" :key="product.prodID">
         <img :src="product.prodUrl" alt="Product Image" class="product-image" />
         <h3>{{ product.prodName }}</h3>
@@ -19,7 +24,7 @@
         <CardComp v-for="product of products" :key="product.prodID" :product="product" />
     </div>
     
-        <div class="loader"></div>
+        <div v-else class="loader"></div>
    </div>
 </template>
 <script>
@@ -30,7 +35,7 @@ export default {
     return {
       selectedCategory: "", // Holds the selected category
       filteredProducts: [], // Holds the filtered products
-      categories: ["Necklace", "Watch", "Earrings", "Ring"] // Example categories
+      categories: ["Necklace", "Watch", "Earrings", "Ring"],
     };
   },
 
@@ -40,15 +45,32 @@ export default {
         }
     },
     methods: {
+
     filter() {
       this.filteredProducts = this.products.filter(product => {
         return this.selectedCategory === "" || product.category === this.selectedCategory;
       });
-    }
-  },
-    mounted() {
-        this.$store.dispatch("getProducts")
     },
+
+    sortProducts() {
+        this.filteredProducts.sort((a, b) => {
+            if (this.sortOrder === "asc") {
+                return a.amount - b.amount;
+            } else {
+                return b.amount - a.amount;
+            }
+        });
+    },
+  },
+  mounted() {
+    this.$store.dispatch("getProducts").then(() => {
+      this.products = this.$store.state.products;
+    });
+  },
+  
+    // mounted() {
+    //     this.$store.dispatch("getProducts")
+    // },
 
     components: {CardComp},
 }
