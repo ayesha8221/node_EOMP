@@ -85,7 +85,6 @@
 </div>
 </div>
 <!--end of cards-->
-</div>
 </template>
 
 <script>
