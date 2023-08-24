@@ -37,14 +37,8 @@
                     <td><img class="tableImg" :src="product.prodUrl" alt="" /></td>
                     <td>
                       
-                      <button
-                        type="button"
-                        class="btn bton"
-                        data-bs-toggle="modal"
-                        data-bs-target="#editProductModal"
-                        id="edit-row"
-                      >
-                        Edit
+                      <button>
+                      <router-link to="/admin/edit/product"> Edit </router-link>
                       </button>
                       <button
                         type="submit"

@@ -84,7 +84,7 @@
     </button>
   </div> -->
   <!-- <NavbarComp/> -->
-  <Footercomp/>
+  <!-- <Footercomp/> -->
 </template>
 
 <script>

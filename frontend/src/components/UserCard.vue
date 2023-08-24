@@ -35,14 +35,8 @@
                 <td>{{ user.userRole }}</td>
                 <td><img class="tableImg" :src="user.userProfile" alt="" /></td>
                 <td>
-                  <button
-                    type="button"
-                    class="btn bton"
-                    data-bs-toggle="modal"
-                    data-bs-target="#editUserModal"
-                    id="edit-row"
-                  >
-                    Edit
+                  <button>
+                    <router-link to="/admin/edit/user"> Edit</router-link>
                   </button>
                   <button
                         type="submit"

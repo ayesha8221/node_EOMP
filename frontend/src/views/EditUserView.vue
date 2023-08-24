@@ -1,7 +1,6 @@
 <template>
-<div>
+    <div>
       <div>
-        <div v-if="product">
         <label class="label">Product Name</label>
                 <input
                   class="input"
@@ -31,7 +30,7 @@
                   class="input"
                   v-model="category"
                   type="text"
-                  placeholder="category"
+                  placeholder="Name"
                   required
                 />
                 <label class="label">Image</label>
@@ -44,14 +43,49 @@
                 />
                 <button
                   class="btn btn-success mt-3"
-                  @click="updateProduct"
+                  @click="updateUser"
                 >
-                  Update
+                  Add
                 </button>
-        </div>
-        
       </div>
     </div>
+    <!-- <div>
+      <div class="container flex-container" v-if="user">
+        <label class="label">Product Name</label>
+            <input
+              class="input"
+              v-model="product.name"
+              type="text"
+              placeholder="Product Name"
+              required
+            />
+            <label class="label">Price</label>
+            <input
+              class="input"
+              v-model="product.price"
+              type="number"
+              placeholder="R"
+              required
+            />
+            <label class="label">Category</label>
+            <input
+              class="input"
+              v-model="product.category"
+              type="text"
+              placeholder="category"
+              required
+            />
+            <label class="label">Image</label>
+            <input
+              class="input"
+              v-model="product.img"
+              type="text"
+              placeholder="http://"
+              required
+            />
+        <button @click="updateUser" class="btn-submit">Submit</button>
+      </div>
+    </div> -->
   </template>
   
   <script>
@@ -60,31 +94,28 @@
   export default {
     data() {
       return {
-        prodName: '',
-        quantity: '',
-        amount: '',
+        name: '',
+        price: '',
         category: '',
-        prodUrl: '',
+        img: '',
       };
     },
     methods: {
-      async updateProduct() {
+      async updateUser() {
         try {
           await axios.put(
-            `https://e-com-api-68tp.onrender.com/products/${this.$route.params.id}`,
+            `https://e-com-api-68tp.onrender.com/users/${this.$route.params.id}`,
             {
-                prodName: this.product.prodName,
-                quantity: this.product.quantity,
-                amount: this.product.amount,
+              name: this.product.name,
+              price: this.product.price,
               category: this.product.category,
-              prodUrl: this.product.prodUrl,
+              img: this.product.img,
             }
           );
-          this.prodName = '';
-          this.quantity = '';
-          this.amount = '';
+          this.name = '';
+          this.price = '';
           this.category = '';
-          this.prodUrl = '';
+          this.img = '';
           this.$router.push("/admin");
         } catch (err) {
           console.log(err);
@@ -98,8 +129,8 @@
       },
     },
     mounted() {
-    //   this.$store.dispatch("getProduct", this.id),
-      this.$store.dispatch("getProducts");
+    //   this.$store.dispatch("getUser", this.id),
+      this.$store.dispatch("getUsers");
     },
   };
   </script>
