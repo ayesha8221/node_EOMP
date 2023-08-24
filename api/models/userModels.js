@@ -42,7 +42,7 @@ const insertUser = (data, result) => {
 // Update an existing user
 const updateUserByID = (id, data, result) => {
     db.query(
-      "UPDATE users SET firstName = ?, lastName = ?, userAge = ?, Gender = ?, userRole = ? , emailAdd = ? , userPass = ? , userProfile = ? WHERE userID = ?",
+      "UPDATE Users SET firstName = ?, lastName = ?, userAge = ?, Gender = ?, userRole = ? , emailAdd = ? , userPass = ? , userProfile = ? WHERE userID = ?",
       [
         data.firstName,
         data.lastName,

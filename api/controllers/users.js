@@ -70,7 +70,7 @@ const deleteUser = (req, res) => {
     });
   };
 
-  // update a product
+  // update a user
 const updateUser = (req, res) => {
     const id = req.params.id;
     const data = req.body;
