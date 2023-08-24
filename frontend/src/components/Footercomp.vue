@@ -1,5 +1,6 @@
 <template>
-    <!-- Footer -->
+   <div>
+     <!-- Footer -->
   <footer
           class="text-center text-lg-start text-white  "
           style="background-color:black;;"
@@ -121,7 +122,7 @@
   <!-- Footer -->
 
 <!-- End of .container -->   
-
+   </div>
   </template>
   
   <script>
