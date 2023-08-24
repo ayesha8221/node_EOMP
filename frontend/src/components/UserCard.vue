@@ -4,13 +4,7 @@
       <div class="row table-container">
         <div class="col-12">
           <h1>Users</h1>
-          <button
-            type="button"
-            class="btn btn-success add-btn"
-            data-bs-toggle="modal"
-            data-bs-target="#addUserModal"
-          >
-            Add
+          <button><router-link to="/admin/add/user"> Add User </router-link>
           </button>
         </div>
         <div class="col">
@@ -51,14 +45,13 @@
                     Edit
                   </button>
                   <button
-                    type="button"
-                    class="btn btton"
-                    data-bs-toggle="modal"
-                    data-bs-target="#exampleModal"
-                    id="delete-row"
-                  >
-                    Delete
-                  </button>
+                        type="submit"
+                        class="btn btton"
+                        @click= deleteProduct(user.userID)
+                        id="delete-row"
+                      >
+                        Delete
+                      </button>
                 </td>
               </tr>
             </tbody>
@@ -82,6 +75,17 @@ export default {
     mounted() {
         this.$store.dispatch("getUsers")
     },
+
+    methods: {
+    async deleteProduct(id) {
+      try {
+        await axios.delete(`https://nodeeomp.onrender.com/users/${id}`);
+        this.$store.dispatch("getUsers")
+      } catch (err) {
+        alert(err);
+      }
+    },
+  },
 
     components: {UserCard},
 }

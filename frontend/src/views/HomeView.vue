@@ -32,6 +32,7 @@
   </div>
 </div>
 </div>
+</div>
 
 <!--end of cards-->
 <!--Start of slide-->

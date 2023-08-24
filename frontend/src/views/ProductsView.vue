@@ -17,7 +17,7 @@
 <div v-if="products" class="flex-container row row-cols-3">
         <CardComp v-for="product of products" :key="product.prodID" :product="product" />
     </div>
-        <div class="loader"></div>
+        <div v-else class="loader"></div>
 </template>
 <script>
 import CardComp from '@/components/CardComp.vue';
