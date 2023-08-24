@@ -49,43 +49,6 @@
                 </button>
       </div>
     </div>
-    <!-- <div>
-      <div class="container flex-container" v-if="user">
-        <label class="label">Product Name</label>
-            <input
-              class="input"
-              v-model="product.name"
-              type="text"
-              placeholder="Product Name"
-              required
-            />
-            <label class="label">Price</label>
-            <input
-              class="input"
-              v-model="product.price"
-              type="number"
-              placeholder="R"
-              required
-            />
-            <label class="label">Category</label>
-            <input
-              class="input"
-              v-model="product.category"
-              type="text"
-              placeholder="category"
-              required
-            />
-            <label class="label">Image</label>
-            <input
-              class="input"
-              v-model="product.img"
-              type="text"
-              placeholder="http://"
-              required
-            />
-        <button @click="updateUser" class="btn-submit">Submit</button>
-      </div>
-    </div> -->
   </template>
   
   <script>

@@ -1,16 +1,12 @@
 <template>
    <div>
+    <input type="text" v-model="searchQuery" @input="performSearch" placeholder="Search products🔎" />
     <div>
 <select v-model="selectedCategory" @change="filter">
       <option value="">All</option>
       <!-- <option value="Necklaces">Necklaces</option> -->
       <option v-for="category in categories" :key="category">{{ category }}</option>
     </select>
-
-    <select v-model="sortOrder" @change="sortProducts">
-    <option value="asc">Low to High</option>
-    <option value="desc">High to Low</option>
-</select>
 
     <div v-for="product in filteredProducts" :key="product.prodID">
         <img :src="product.prodUrl" alt="Product Image" class="product-image" />
@@ -36,6 +32,7 @@ export default {
       selectedCategory: "", // Holds the selected category
       filteredProducts: [], // Holds the filtered products
       categories: ["Necklace", "Watch", "Earrings", "Ring"],
+      searchQuery: ""
     };
   },
 
@@ -61,6 +58,15 @@ export default {
             }
         });
     },
+    performSearch() {
+    this.filteredProducts = this.products.filter(product => {
+      const productName = product.prodName.toLowerCase();
+      return productName.includes(this.searchQuery.toLowerCase());
+    });
+  }
+
+
+
   },
   mounted() {
     this.$store.dispatch("getProducts").then(() => {
