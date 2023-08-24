@@ -39,17 +39,27 @@ const insertProduct = (data, result) => {
 
 
 // Update an existing product
- const updateProductByID = (id, data, result) => {
-    db.query('UPDATE Products SET prodName = ?, quantity = ?, amount = ?, category = ? prodUrl = ? WHERE prodID = ?', [data.prodName, data.quantity, data.amount, data.category, data.prodUrl, id], (err, results) => {
+const updateProductByID = (id, data, result) => {
+    db.query(
+      "UPDATE Products SET prodName = ?, quantity = ?, amount = ?, category = ?, prodURL = ? WHERE prodID = ?",
+      [
+        data.prodName,
+        data.quantity,
+        data.amount,
+        data.category,
+        data.prodURL,
+        id,
+      ],
+      (err, results) => {
         if (err) {
-            console.log(err);
-            result({ error: "Failed to update Products." }, null);
+          console.log(err);
+          result({ error: "Failed to update product." }, null);
         } else {
-            result(null, results);
+          result(null, results);
         }
-        
-    });
-};                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+      }
+    );
+  };                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
 
 // Delete a product
 const deleteProductByID = (id, result) => {
