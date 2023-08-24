@@ -20,7 +20,7 @@
                 <label class="label">Gender</label>
                 <input
                   class="input"
-                  v-model="amount"
+                  v-model="Gender"
                   type="number"
                   placeholder="R"
                   required
@@ -28,7 +28,7 @@
                 <label class="label">Age</label>
                 <input
                   class="input"
-                  v-model="Gender"
+                  v-model="userAge"
                   type="text"
                   placeholder="Name"
                   required
@@ -67,7 +67,7 @@
                 />
                 <button
                   class="btn btn-success mt-3"
-                  @click="addProduct"
+                  @click="addUser"
                 >
                   Add
                 </button>
@@ -92,7 +92,7 @@
             }
         },
         methods: {
-            async addProduct(){
+            async addUser(){
                 try {
                     await axios.post('https://nodeeomp.onrender.com/users', {
                         firstName: this.firstName,

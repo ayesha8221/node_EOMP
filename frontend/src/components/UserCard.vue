@@ -47,7 +47,7 @@
                   <button
                         type="submit"
                         class="btn btton"
-                        @click= deleteProduct(user.userID)
+                        @click= deleteUser(user.userID)
                         id="delete-row"
                       >
                         Delete
@@ -63,6 +63,8 @@
 </template>
 <script>
 
+import axios from 'axios'
+
   import UserCard from '@/components/UserCard.vue';
 export default {
     // props: ["users"],
@@ -77,7 +79,7 @@ export default {
     },
 
     methods: {
-    async deleteProduct(id) {
+    async deleteUser(id) {
       try {
         await axios.delete(`https://nodeeomp.onrender.com/users/${id}`);
         this.$store.dispatch("getUsers")
