@@ -1,11 +1,4 @@
 <template>
-    <div>
-    <!-- ... Other content ... -->
-    <button @click="toggleSort">
-      {{ isAscending ? 'Sort by Price (Low to High)' : 'Sort by Price (High to Low)' }}
-    </button>
-    <!-- ... Product listing ... -->
-  </div>
 <div class="body" v-if="products">
           <div class="row table-container">
             <div class="col-12">
