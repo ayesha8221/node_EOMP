@@ -1,5 +1,5 @@
 <template lang="">
-  <EditUserComp/>
+  <EditUserCompVue/>
 </template>
 <script>
 

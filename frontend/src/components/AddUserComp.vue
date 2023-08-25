@@ -74,6 +74,7 @@
                 >
                   Add
                 </button>
+                <p v-if="successMessage" class="success-message">{{ successMessage }}</p>
       </div>
     </div>
     </template>
@@ -106,13 +107,15 @@
                         userPass: this.userPass,
                         userProfile: this.userProfile
                     })
+                    
                     this.firstName = '';
                     this.lastName = '';
                     this.userAge = '';
                     this.Gender = '';
                     this.userRole= '';
                     this.userPass = '';
-                    this.userProfile = ''
+                    this.userProfile = '',
+                    
                     this.$router.push('/admin')                
                 } catch ( err ){
                   alert( err )

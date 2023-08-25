@@ -17,7 +17,7 @@
     <div v-for="product in filteredProducts" :key="product.prodID">
       <img :src="product.prodUrl" alt="Product Image" class="product-image" />
         <h3>{{ product.prodName }}</h3>
-  <p>Price: R {{ product.amount }}</p>
+  <p> R {{ product.amount }}</p>
   <p>Quantity: {{ product.quantity }}</p>
     </div>
     

@@ -4,7 +4,7 @@
       <router-link :to="{ name: 'product', params: { id: product.prodID } }">
         <img :src="product.prodUrl" :alt="product.prodName" class="picture" />
         <h3>{{ product.prodName }}</h3>
-        <p>{{ product.amount }}</p>
+        <p> R {{ product.amount }}</p>
         <button v-on:click="addToCart" class="addbtn">View more</button>
       </router-link>
     </div>

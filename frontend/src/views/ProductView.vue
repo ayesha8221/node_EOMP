@@ -7,7 +7,7 @@
                 {{ product.prodName }}
             </h2>
                 <div class="card-body m-2">
-                    <p>{{ product.amount }}</p>
+                    <p>R  {{ product.amount }}</p>
                 </div>
             </div>
         </div>

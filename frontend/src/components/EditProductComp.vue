@@ -5,7 +5,7 @@
             <label class="label">Product Name</label>
                     <input
                       class="input"
-                      v-model="prodName"
+                      v-model="product.prodName"
                       type="text"
                       placeholder="Product Name"
                       required
@@ -13,7 +13,7 @@
                     <label class="label">Quantity</label>
                     <input
                       class="input"
-                      v-model="quantity"
+                      v-model="product.quantity"
                       type="text"
                       placeholder="quantity"
                       required
@@ -21,7 +21,7 @@
                     <label class="label">Price</label>
                     <input
                       class="input"
-                      v-model="amount"
+                      v-model="product.amount"
                       type="number"
                       placeholder="R"
                       required
@@ -29,7 +29,7 @@
                     <label class="label">Category</label>
                     <input
                       class="input"
-                      v-model="category"
+                      v-model="product.category"
                       type="text"
                       placeholder="category"
                       required
@@ -37,7 +37,7 @@
                     <label class="label">Image</label>
                     <input
                       class="input"
-                      v-model="prodUrl"
+                      v-model="product.prodUrl"
                       type="text"
                       placeholder="http://"
                       required
@@ -71,7 +71,7 @@
           async updateProduct() {
             try {
               await axios.put(
-                `https://e-com-api-68tp.onrender.com/products/${this.$route.params.id}`,
+                `https://nodeeomp.onrender.com/products/${this.$route.params.id}`,
                 {
                     prodName: this.product.prodName,
                     quantity: this.product.quantity,
@@ -91,14 +91,14 @@
             }
           },
         },
-        // props: ["id"],
+        props: ["id"],
         computed: {
           product() {
             return this.$store.state.product;
           },
         },
         mounted() {
-        //   this.$store.dispatch("getProduct", this.id),
+          this.$store.dispatch("getProduct", this.id),
           this.$store.dispatch("getProducts");
         },
       };

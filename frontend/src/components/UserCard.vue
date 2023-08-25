@@ -1,4 +1,8 @@
 <template>
+
+  <div>
+    {{  }}
+  </div>
   <div v-if="users">
    
     <div class="container">
@@ -38,7 +42,7 @@
                 <td>
                   
                   <button>
-                    <router-link to="/admin/edit/user"> Edit</router-link>
+                    <router-link :to="{ name: 'admin edit user', params: { id : user.userID } }"> Edit </router-link>
                   </button>
                   <button
                         type="submit"
