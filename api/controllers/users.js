@@ -2,7 +2,7 @@ const { router } = require("json-server");
 const { getUsers, getUserByID, insertUser, deleteUserByID, updateUserByID} =require("../models/userModels.js")
 // const {bcrypt} = require('bcrypt');
 const bcrypt = require('bcrypt')
-const createToken = require('../middleware/AuthenticateUser.js')
+const {createToken} = require('../middleware/AuthenticateUser.js')
 
 
 // Get All Users
@@ -49,28 +49,21 @@ const showUserById = (req, res) => {
 // Add New User
 const createUser = (req, res) => {
   const data = req.body;
-  
-  // Check if userPass is provided in the request body
-  if (!data.userPass) {
-    return res.status(400).json({ error: "Password is required." });
-  }
-
-  // Hash the password
   data.userPass = bcrypt.hashSync(data.userPass, 10);
-
   const user = {
     emailAdd: data.emailAdd,
     userPass: data.userPass,
   };
-  
   let token = createToken(user);
-  
+  // if (!data.userPass) {
+  //   return res.status(400).json({ error: "Password is required." });
+  // }
+   
+  // Check if userPass is provided in the request body
   insertUser(data, (err, results) => {
-    if (err) {
-      return res.status(500).json({ error: "An error occurred while creating the user." });
-    }
-    
-    res.json({ token, results });
+    if (err) throw err;
+    res.cookie("authorizedUser", token, {maxAge: 3600000, httpOnly: true});
+    res.json({results, token})
   });
 };
 
