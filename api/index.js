@@ -21,7 +21,7 @@ app.use(express.json(), cors(), cookieParser());
 
 // Allowing frontend access to backend
 app.use((req, res, next)=>{
-  res.header("Access-Control-Allow-Origin", "https://eomp-9b235.web.app/");
+  res.header("Access-Control-Allow-Origin", "");
   res.header("Access-Control-Allow-Credentials", "true");
   res.header("Access-Control-Allow-Methods", "*");
   res.header("Access-Control-Request-Methods", "*");
