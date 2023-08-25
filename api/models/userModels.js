@@ -1,5 +1,6 @@
 const db = require("../config/db.js");
-
+const { createToken } = require("../middleware/AuthenticateUser.js")
+const { compare } = require("bcrypt")
 // const bcrypt = require ('bcrypt');
 // Get All Users
 const getUsers = (result) => {
@@ -37,6 +38,46 @@ const insertUser = (data, result) => {
         }
     });   
 }
+
+ const userLogin = (req, res) => {
+    const { emailAdd, userPass } = req.body;
+    const query = `SELECT firstName, lastName, userAge, Gender, userRole, emailAdd, userPass, userProfile FROM Users WHERE emailAdd = '${emailAdd}'`;
+    db.query(query, async (err, result) => {
+      if (err) throw err;
+      if (!result?.length) {
+        res.json({
+          status: res.statusCode,
+          message: "Incorrect email address!",
+        });
+      } else {
+        await compare(userPass, result[0].userPass, (cErr, cResult) => {
+          if (cErr) throw cErr;
+          // create token
+          const token = createToken({
+            emailAdd,
+            userPass,
+          });
+          // save token
+          res.cookie("LegitUser", token, {
+            maxAge: 3600000,
+            httpOnly: true,
+          });
+          if (cResult) {
+            res.json({
+              message: "You can now enter another time",
+              token,
+              result: result[0],
+            });
+          } else {
+            res.json({
+              status: res.statusCode,
+              message: "Unregistered user or incorrect password!",
+            });
+          }
+        });
+      }
+    });
+  };
 
 // Update an existing user
 const updateUserByID = (id, data, result) => {
@@ -83,4 +124,5 @@ module.exports = {
     insertUser,
     updateUserByID,
     deleteUserByID,
+    userLogin
   };

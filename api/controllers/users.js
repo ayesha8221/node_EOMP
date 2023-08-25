@@ -92,47 +92,45 @@ const updateUser = (req, res) => {
     });
   };
 
-  // class users {
-  //   login(req, res) {
-  //     const { emailAdd, userPass } = req.body;
-  //     const query = `
-  //     SELECT userID, firstName, lastName, userAge, Gender, userRole,
-  //     emailAdd, userProfile, userPass
-  //     FROM users
-  //     WHERE emailAdd = ?;
-  //   `;
-  //     db.query(query, [emailAdd], async (err, result) => {
-  //       if (err) throw err;
-  //       if (!result?.length) {
-  //         res.json({
-  //           status: res.statusCode,
-  //           msg: "You provided a wrong email.",
-  //         });
-  //       } else {
-  //         await compare(userPass, result[0].userPass, (cErr, cResult) => {
-  //           if (cErr) throw cErr;
-  //           // Create a token
-  //           const token = createToken({
-  //             emailAdd,
-  //             userPass,
-  //           });
-  //           if (cResult) {
-  //             res.json({
-  //               msg: "Logged in",
-  //               token,
-  //               result: result[0],
-  //             });
-  //           } else {
-  //             res.json({
-  //               status: res.statusCode,
-  //               msg: "Invalid password or you have not registered",
-  //             });
-  //           }
-  //         });
-  //       }
-  //     });
-  //   }
-  // }
+  const userLogin = (req, res) => {
+    const { emailAdd, userPass } = req.body;
+    const query = `SELECT firstName, lastName, userAge, gender, userRole, emailAdd, userPass FROM usersTable WHERE emailAdd = '${emailAdd}'`;
+    db.query(query, async (err, result) => {
+      if (err) throw err;
+      if (!result?.length) {
+        res.json({
+          status: res.statusCode,
+          message: "Incorrect email address!",
+        });
+      } else {
+        await compare(userPass, result[0].userPass, (cErr, cResult) => {
+          if (cErr) throw cErr;
+          // create token
+          const token = createToken({
+            emailAdd,
+            userPass,
+          });
+          // save token
+          res.cookie("LegitUser", token, {
+            maxAge: 3600000,
+            httpOnly: true,
+          });
+          if (cResult) {
+            res.json({
+              message: "You can now enter another time",
+              token,
+              result: result[0],
+            });
+          } else {
+            res.json({
+              status: res.statusCode,
+              message: "Unregistered user or incorrect password!",
+            });
+          }
+        });
+      }
+    });
+  };
   
   module.exports = {
     showUsers,

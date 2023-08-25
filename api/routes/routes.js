@@ -34,6 +34,7 @@ const {
   deleteUser,
   updateUser,
 } = require("../controllers/users");
+const { userLogin } = require("../models/userModels");
 
 //get all users
 router.get("/users", showUsers);
@@ -49,6 +50,9 @@ router.delete("/users/:id", deleteUser);
 
 // Update a user
 router.put("/users/:id", updateUser);
+
+//login
+router.post("/user/login", userLogin);
 
 // export default router
 module.exports = router;
