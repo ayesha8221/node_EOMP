@@ -1,5 +1,6 @@
 <template>
   <div v-if="users">
+   
     <div class="container">
       <div class="row table-container">
         <div class="col-12">
@@ -35,6 +36,7 @@
                 <td>{{ user.userRole }}</td>
                 <td><img class="tableImg" :src="user.userProfile" alt="" /></td>
                 <td>
+                  
                   <button>
                     <router-link to="/admin/edit/user"> Edit</router-link>
                   </button>
@@ -53,12 +55,15 @@
         </div>
       </div>
     </div>
+   
   </div>
+  <loading-spinner v-else/>
 </template>
 <script>
 
 import axios from 'axios'
 
+import LoadingSpinner from '@/components/LoadingSpinner.vue';
   import UserCard from '@/components/UserCard.vue';
 export default {
     // props: ["users"],
@@ -83,7 +88,7 @@ export default {
     },
   },
 
-    components: {UserCard},
+    components: {UserCard, LoadingSpinner},
 }
 </script>
 <style>
