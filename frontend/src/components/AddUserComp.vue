@@ -1,9 +1,9 @@
 <template lang="">
     <div>
       <div>
-        <!-- <div v-if="product"> -->
+        <!-- <div v-if="user"> -->
         
-        <!-- </div> -->
+        
         <label class="label">First Name</label>
                 <input
                   class="input"
@@ -74,8 +74,9 @@
                 >
                   Add
                 </button>
-                <p v-if="successMessage" class="success-message">{{ successMessage }}</p>
+                <!-- <p v-if="successMessage" class="success-message">{{ successMessage }}</p> -->
       </div>
+      <!-- </div> -->
     </div>
     </template>
     <script>
@@ -98,7 +99,7 @@
         methods: {
             async addUser(){
                 try {
-                    await axios.post('https://nodeeomp.onrender.com/users', {
+                    await axios.post('https://nodeeomp.onrender.com/users/', {
                         firstName: this.firstName,
                         lastName: this.lastName,
                         userAge: this.userAge,
