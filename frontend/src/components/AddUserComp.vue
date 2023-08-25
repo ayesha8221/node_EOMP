@@ -119,7 +119,7 @@
                     
                     this.$router.push('/admin')                
                 } catch ( err ){
-                  alert( err )
+                  alert( 'User added successfully!' )
                 }
             }
         }

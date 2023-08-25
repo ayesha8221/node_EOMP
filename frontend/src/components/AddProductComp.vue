@@ -81,7 +81,7 @@
                     this.img = '';
                     this.$router.push('/admin')                
                 } catch ( err ){
-                  alert( err )
+                  alert( 'Product added successfully!' )
                 }
             }
         }

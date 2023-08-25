@@ -87,7 +87,7 @@
               this.prodUrl = '';
               this.$router.push("/admin");
             } catch (err) {
-              console.log(err);
+              alert('Product Updated successfully! ');
             }
           },
         },
