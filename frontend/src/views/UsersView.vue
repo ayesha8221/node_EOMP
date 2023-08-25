@@ -1,10 +1,17 @@
 <template>
-    <div v-if="users" class="flex-container row row-cols-3">
+    <div>
+<div v-if="users" class="flex-container row row-cols-3">
         <UserCard v-for="user of users" :key="user.userID" :user="user" />
     </div>
-    <div v-else>Loading...</div>
+        <loading-spinner v-else/>
+    </div>
+    
+
+    
 </template>
 <script>
+
+import LoadingSpinner from '@/components/LoadingSpinner.vue';
 import UserCard from '@/components/UserCard.vue';
 export default {
     computed: {
@@ -17,7 +24,7 @@ export default {
         this.$store.dispatch("getUsers")
     },
 
-    components: {UserCard},
+    components: {UserCard, LoadingSpinner},
 }
 </script>
 <style>

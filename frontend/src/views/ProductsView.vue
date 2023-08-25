@@ -1,5 +1,6 @@
 <template>
     <div>
+      
     <input type="text" v-model="searchQuery" @input="performSearch" placeholder="Search products🔎" />
     <select v-model="selectedCategory" @change="filter">
       <option value="">All</option>
@@ -9,6 +10,9 @@
       <option value="asc">Low to High</option>
       <option value="desc">High to Low</option>
     </select>
+
+
+
     <!-- Display filtered products -->
     <div v-for="product in filteredProducts" :key="product.prodID">
       <img :src="product.prodUrl" alt="Product Image" class="product-image" />
@@ -20,8 +24,9 @@
 
     <div v-if="products" class="flex-container row row-cols-3">
         <CardComp v-for="product of products" :key="product.prodID" :product="product" />
+        
     </div>
-    <div v-else class="loader"></div>
+    <loading-spinner v-else/>
   </div>
 
    <!-- <div>
@@ -61,6 +66,8 @@
    </div> -->
 </template>
 <script>
+
+import LoadingSpinner from '@/components/LoadingSpinner.vue';
 import CardComp from '@/components/CardComp.vue';
 export default {
 
@@ -70,13 +77,15 @@ export default {
       filteredProducts: [], // Holds the filtered products
       categories: ["Necklace", "Watch", "Earrings", "Ring"],
       searchQuery: "",
-      sortOrder: "asc"
+      sortOrder: "asc",
+      // isLoading: true,
     };
   },
 
     computed: {
         products() {
             return this.$store.state.products
+            
         }
     },
     methods: {
@@ -117,18 +126,18 @@ export default {
         this.$store.dispatch("getProducts")
     },
 
-    components: {CardComp},
+    components: {CardComp, LoadingSpinner},
 }
 </script>
 <style>
 
-.loader {
+/* .loader {
     align-items: center;
     justify-content: center;
     text-align: center;
-    /* justify-items: center; */
-  border: 7px solid #fff9e4; /* Light grey */
-  border-top: 7px solid #0a0b0c; /* Blue */
+    justify-items: center;
+  border: 7px solid #fff9e4;
+  border-top: 7px solid #0a0b0c; 
   border-radius: 50%;
   width: 35px;
   height: 35px;
@@ -138,6 +147,6 @@ export default {
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
-}
+} */
 
 </style>
