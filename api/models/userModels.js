@@ -1,5 +1,4 @@
 const db = require("../config/db.js");
-// const { createToken } = require("../Middleware/AuthenticateUser");
 
 // const bcrypt = require ('bcrypt');
 // Get All Users

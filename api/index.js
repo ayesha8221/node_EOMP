@@ -9,19 +9,19 @@ const errorHandling = require("./middleware/ErrorHandling");
 // const {errorHandling} = require('./middleware/ErrorHandling')
 // import errorHandling from "./middleware/ErrorHandling";
 
-const cookieparser = require("cookie-parser")
+const cookieParser = require("cookie-parser")
 
 // Setting port based on environment variables
 require("dotenv").config();
 const PORT = process.env.PORT || 3000;
 
 
-app.use(express.json(), cors(), cookieparser());
+app.use(express.json(), cors(), cookieParser());
 
 
 // Allowing frontend access to backend
 app.use((req, res, next)=>{
-  res.header("Access-Control-Allow-Origin", "http://localhost:8080");
+  res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Credentials", "true");
   res.header("Access-Control-Allow-Methods", "*");
   res.header("Access-Control-Request-Methods", "*");

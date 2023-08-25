@@ -47,25 +47,32 @@ const showUserById = (req, res) => {
 //       }
 //   });
 // Add New User
-const  createUser = (req, res) => {
-    const data = req.body;
-const user = {
-  emailAdd: data.emailAdd,
-  userPass: data.userPass,
-}
+const createUser = (req, res) => {
+  const data = req.body;
+  
+  // Check if userPass is provided in the request body
+  if (!data.userPass) {
+    return res.status(400).json({ error: "Password is required." });
+  }
 
-let token = createToken(user)
-    data.userPass =  bcrypt.hashSync(data.userPass, 10);
-    insertUser(data, (err, results) => {
-        if (err){
-            res.send(err);
-        }else{
-          res.cookie("authorizedUser", token, {maxAge: 360000, httpOnly: true})
-            res.json(results, token);
+  // Hash the password
+  data.userPass = bcrypt.hashSync(data.userPass, 10);
 
-        }
-    });
-}
+  const user = {
+    emailAdd: data.emailAdd,
+    userPass: data.userPass,
+  };
+  
+  let token = createToken(user);
+  
+  insertUser(data, (err, results) => {
+    if (err) {
+      return res.status(500).json({ error: "An error occurred while creating the user." });
+    }
+    
+    res.json({ token, results });
+  });
+};
 
 // delete a user
 const deleteUser = (req, res) => {
@@ -91,6 +98,48 @@ const updateUser = (req, res) => {
       }
     });
   };
+
+  class users {
+    login(req, res) {
+      const { emailAdd, userPass } = req.body;
+      const query = `
+      SELECT userID, firstName, lastName, userAge, Gender, userRole,
+      emailAdd, userProfile, userPass
+      FROM users
+      WHERE emailAdd = ?;
+    `;
+      db.query(query, [emailAdd], async (err, result) => {
+        if (err) throw err;
+        if (!result?.length) {
+          res.json({
+            status: res.statusCode,
+            msg: "You provided a wrong email.",
+          });
+        } else {
+          await compare(userPass, result[0].userPass, (cErr, cResult) => {
+            if (cErr) throw cErr;
+            // Create a token
+            const token = createToken({
+              emailAdd,
+              userPass,
+            });
+            if (cResult) {
+              res.json({
+                msg: "Logged in",
+                token,
+                result: result[0],
+              });
+            } else {
+              res.json({
+                status: res.statusCode,
+                msg: "Invalid password or you have not registered",
+              });
+            }
+          });
+        }
+      });
+    }
+  }
   
   module.exports = {
     showUsers,
