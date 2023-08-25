@@ -47,7 +47,7 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/AdminProductsView.vue')
   },
   {
-    path: '/admin/add/product/:id',
+    path: '/admin/add/product/',
     name: ' admin add product',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
@@ -55,7 +55,7 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/AddProductView.vue')
   },
   {
-    path: '/admin/add/user/:id',
+    path: '/admin/add/user',
     name: ' admin add user',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
