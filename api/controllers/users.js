@@ -99,47 +99,47 @@ const updateUser = (req, res) => {
     });
   };
 
-  class users {
-    login(req, res) {
-      const { emailAdd, userPass } = req.body;
-      const query = `
-      SELECT userID, firstName, lastName, userAge, Gender, userRole,
-      emailAdd, userProfile, userPass
-      FROM users
-      WHERE emailAdd = ?;
-    `;
-      db.query(query, [emailAdd], async (err, result) => {
-        if (err) throw err;
-        if (!result?.length) {
-          res.json({
-            status: res.statusCode,
-            msg: "You provided a wrong email.",
-          });
-        } else {
-          await compare(userPass, result[0].userPass, (cErr, cResult) => {
-            if (cErr) throw cErr;
-            // Create a token
-            const token = createToken({
-              emailAdd,
-              userPass,
-            });
-            if (cResult) {
-              res.json({
-                msg: "Logged in",
-                token,
-                result: result[0],
-              });
-            } else {
-              res.json({
-                status: res.statusCode,
-                msg: "Invalid password or you have not registered",
-              });
-            }
-          });
-        }
-      });
-    }
-  }
+  // class users {
+  //   login(req, res) {
+  //     const { emailAdd, userPass } = req.body;
+  //     const query = `
+  //     SELECT userID, firstName, lastName, userAge, Gender, userRole,
+  //     emailAdd, userProfile, userPass
+  //     FROM users
+  //     WHERE emailAdd = ?;
+  //   `;
+  //     db.query(query, [emailAdd], async (err, result) => {
+  //       if (err) throw err;
+  //       if (!result?.length) {
+  //         res.json({
+  //           status: res.statusCode,
+  //           msg: "You provided a wrong email.",
+  //         });
+  //       } else {
+  //         await compare(userPass, result[0].userPass, (cErr, cResult) => {
+  //           if (cErr) throw cErr;
+  //           // Create a token
+  //           const token = createToken({
+  //             emailAdd,
+  //             userPass,
+  //           });
+  //           if (cResult) {
+  //             res.json({
+  //               msg: "Logged in",
+  //               token,
+  //               result: result[0],
+  //             });
+  //           } else {
+  //             res.json({
+  //               status: res.statusCode,
+  //               msg: "Invalid password or you have not registered",
+  //             });
+  //           }
+  //         });
+  //       }
+  //     });
+  //   }
+  // }
   
   module.exports = {
     showUsers,
